@@ -7,35 +7,32 @@ while True:
 '''Enter the lower and upper range of the number that you want to guess!
 (ex: 1 100, 20 55, etc.)
 > ''').split()) 
+
     secret_number = random.randint(x, y)
 
     # print('Secret number: {}'.format(secret_number))
 
     user_guess = 0
-    attempts = 1
+    attempts = 0
     print(f'Guess a number between {x} and {y}: ')
     while attempts <= MAX_ATTEMPTS:
         try:
-            print('Guess #{}'.format(attempts))
+            print('Guess {}/{}'.format(attempts, MAX_ATTEMPTS))
             user_guess = int(input('> '))
             if not x <= user_guess <= y:
                 print(f'The number between {x} and {y}!')
                 continue
             attempts += 1
             if user_guess < secret_number:
-                print('Too low!')
+                print('Too low!\n')
             elif user_guess > secret_number:
-                print('Too high!')
+                print('Too high!\n')
             else:
-                print('Correct! You got it in {} attempts'.format(attempts))
+                print('Correct! You got it in {} attempts\n'.format(attempts))
 
             if attempts > MAX_ATTEMPTS:
                 print('You\'ve lost the game.')
-                print('The secret number is {}'.format(secret_number))
-
-            print('Play again? (y/n)')
-            if not input('> ').lower().startswith('y'):
-                break
+                print('The secret number is {}\n'.format(secret_number))
 
         except ValueError:
             print('Enter a number!')
@@ -43,5 +40,13 @@ while True:
         except KeyboardInterrupt:
             print('\nGoodbye!')
             break
+
+    if user_guess != secret_number:
+        print("You've lost the game.")
+        print(f'The secret number is {secret_number}\n')
+
+    print('Play again? (y/n)')
+    if not input('> ').lower().startswith('y'):
+        break
     
 
