@@ -20,7 +20,6 @@ while True:
                 print(f'The number between 1 and 100!')
                 continue
 
-            attempts += 1
 
             if user_guess < secret_number:
                 print('Too low!\n')
@@ -30,6 +29,8 @@ while True:
                 print()
                 print('Correct! You got it in {} attempts\n'.format(attempts))
                 break
+
+            attempts += 1
 
         except ValueError:
             print('Enter a number!')
