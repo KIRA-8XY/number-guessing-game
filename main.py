@@ -1,4 +1,4 @@
-import random
+import random, sys
 MAX_ATTEMPTS = 7
 
 while True:
@@ -17,7 +17,7 @@ while True:
             user_guess = int(input('> '))
 
             if not 1 <= user_guess <= 100:
-                print(f'The number between 1 and 100!')
+                print('The number between 1 and 100!')
                 continue
 
 
@@ -35,9 +35,10 @@ while True:
         except ValueError:
             print('Enter a number!')
             continue
+
         except KeyboardInterrupt:
             print('\nGoodbye!')
-            break
+            sys.exit()
 
     if user_guess != secret_number:
         print()
