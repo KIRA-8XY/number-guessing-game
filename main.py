@@ -1,23 +1,25 @@
 import random, sys
 MAX_ATTEMPTS = 7
+MIN_NUMBER = 1
+MAX_NUMBER = 100
 
 while True:
     print('Welcome to the number-guessing-game!')
-    print('I have selected a number between 1 and 100')
-    print('You have 7 attempts to guess it!')
+    print(f'I have selected a number between {MIN_NUMBER} and {MAX_NUMBER}')
+    print('\nYou have 7 attempts to guess it!')
 
-    secret_number = random.randint(1, 100)
+    secret_number = random.randint(MIN_NUMBER, MAX_NUMBER)
 
     user_guess = 0
     attempts = 1
-    print('Guess a number between 1 and 100\n')
+    print(f'Guess a number between {MIN_NUMBER} and {MAX_NUMBER}\n')
     while attempts <= MAX_ATTEMPTS:
         try:
             print('Guess {}/{}'.format(attempts, MAX_ATTEMPTS))
             user_guess = int(input('> '))
 
-            if not 1 <= user_guess <= 100:
-                print('The number between 1 and 100!')
+            if not MIN_NUMBER <= user_guess <= MAX_NUMBER:
+                print(f'\nThe number between {MIN_NUMBER} and {MAX_NUMBER}!')
                 continue
 
 
@@ -33,7 +35,7 @@ while True:
             attempts += 1
 
         except ValueError:
-            print('Enter a number!')
+            print('\nEnter a number!')
             continue
 
         except KeyboardInterrupt:
