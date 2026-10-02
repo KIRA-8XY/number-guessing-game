@@ -3,10 +3,14 @@ MAX_ATTEMPTS = 7
 MIN_NUMBER = 1
 MAX_NUMBER = 100
 
-while True:
+def show_instruction():
     print('Welcome to the number-guessing-game!')
     print(f'I have selected a number between {MIN_NUMBER} and {MAX_NUMBER}')
     print(f'\nYou have {MAX_ATTEMPTS} attempts to guess it!')
+
+while True:
+
+    show_instruction()
 
     secret_number = random.randint(MIN_NUMBER, MAX_NUMBER)
 
@@ -19,7 +23,7 @@ while True:
             user_guess = int(input('> '))
 
             if not MIN_NUMBER <= user_guess <= MAX_NUMBER:
-                print(f'\nThe number between {MIN_NUMBER} and {MAX_NUMBER}!')
+                print(f'\nThe number must be between {MIN_NUMBER} and {MAX_NUMBER}!')
                 continue
 
 
@@ -29,7 +33,10 @@ while True:
                 print('Too high!\n')
             else:
                 print()
-                print('Correct! You got it in {} attempts\n'.format(attempts))
+                if attempts > 1:
+                    print('Correct! You got it in {} attempts\n'.format(attempts))
+                else:
+                    print('Correct! You got it in 1 attempt\n')
                 break
 
             attempts += 1
@@ -47,7 +54,13 @@ while True:
         print(f'The secret number is {secret_number}\n')
 
     print('Play again? (enter y to continue)')
-    if not input('> ').lower().startswith('y'):
+    try:
+        answer = input('> ')
+    except KeyboardInterrupt:
+        print('Goodbye!')
+        sys.exit()
+        
+    if not answer.lower().startswith('y'):
         break
     
 
