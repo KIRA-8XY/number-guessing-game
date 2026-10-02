@@ -43,8 +43,7 @@ while True:
             sys.exit()
 
     if user_guess != secret_number:
-        print()
-        print("You've lost the game.")
+        print("\nYou've lost the game.")
         print(f'The secret number is {secret_number}\n')
 
     print('Play again? (enter y to continue)')
