@@ -6,7 +6,7 @@ MAX_NUMBER = 100
 while True:
     print('Welcome to the number-guessing-game!')
     print(f'I have selected a number between {MIN_NUMBER} and {MAX_NUMBER}')
-    print('\nYou have 7 attempts to guess it!')
+    print(f'\nYou have {MAX_ATTEMPTS} attempts to guess it!')
 
     secret_number = random.randint(MIN_NUMBER, MAX_NUMBER)
 
