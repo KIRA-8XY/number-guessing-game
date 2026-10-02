@@ -7,6 +7,27 @@ def show_instruction():
     print('Welcome to the number-guessing-game!')
     print(f'I have selected a number between {MIN_NUMBER} and {MAX_NUMBER}')
     print(f'\nYou have {MAX_ATTEMPTS} attempts to guess it!')
+    print(f'Guess a number between {MIN_NUMBER} and {MAX_NUMBER}\n')
+
+
+def get_guess():
+    while True:
+        try:
+            print('Guess {}/{}'.format(attempts, MAX_ATTEMPTS))
+            user_guess = int(input('> '))
+            return user_guess
+        except ValueError:
+            print('\nEnter a number!')
+
+
+# def play_round():
+#     pass
+
+# def ask_play_again():
+#     pass
+
+# def main():
+#     pass
 
 while True:
 
@@ -16,16 +37,14 @@ while True:
 
     user_guess = 0
     attempts = 1
-    print(f'Guess a number between {MIN_NUMBER} and {MAX_NUMBER}\n')
+
     while attempts <= MAX_ATTEMPTS:
         try:
-            print('Guess {}/{}'.format(attempts, MAX_ATTEMPTS))
-            user_guess = int(input('> '))
+            user_guess = get_guess()
 
             if not MIN_NUMBER <= user_guess <= MAX_NUMBER:
                 print(f'\nThe number must be between {MIN_NUMBER} and {MAX_NUMBER}!')
                 continue
-
 
             if user_guess < secret_number:
                 print('Too low!\n')
@@ -40,10 +59,6 @@ while True:
                 break
 
             attempts += 1
-
-        except ValueError:
-            print('\nEnter a number!')
-            continue
 
         except KeyboardInterrupt:
             print('\nGoodbye!')
